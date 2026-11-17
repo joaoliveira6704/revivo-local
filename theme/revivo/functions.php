@@ -76,3 +76,14 @@ function revivo_assets() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'revivo_assets', 5 );
+
+/**
+ * A minha conta: "Morada" → "Moradas" (a página tem faturação e envio).
+ */
+function revivo_account_menu_items( $items ) {
+	if ( isset( $items['edit-address'] ) ) {
+		$items['edit-address'] = 'Moradas';
+	}
+	return $items;
+}
+add_filter( 'woocommerce_account_menu_items', 'revivo_account_menu_items', 20 );

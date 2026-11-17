@@ -1,0 +1,125 @@
+[
+  {
+    "sku": "RV-PS-001",
+    "name": "Puxador universal para gaveta de frigorífico",
+    "category": "Peças de substituição",
+    "material": "PETG",
+    "price": "7.90",
+    "short": "Puxador de substituição para gavetas de legumes, com encaixe universal de 96 mm entre furos.",
+    "description": "<p>O puxador partiu e a gaveta ainda está boa? Este puxador impresso em <strong>PETG</strong> resiste ao frio e à humidade do frigorífico e encaixa na maioria das gavetas de legumes com furação de 96 mm.</p><ul><li>Distância entre furos: 96 mm</li><li>Material: PETG alimentar, resistente de -20 °C a 70 °C</li><li>Inclui 2 parafusos M4</li></ul><p>A sua marca usa outra medida? <a href=\"{site}/index.php/pedir-peca/\">Peça uma versão à medida</a>.</p>",
+    "image": "puxador"
+  },
+  {
+    "sku": "RV-PS-002",
+    "name": "Botões de comando para fogão (kit de 2)",
+    "category": "Peças de substituição",
+    "material": "PETG",
+    "price": "9.50",
+    "sale": "7.90",
+    "short": "Dois botões de substituição com veio em D de 6 mm, para fogões e placas a gás.",
+    "description": "<p>Botões gastos ou partidos deixam o fogão difícil de usar. Este kit traz <strong>dois botões</strong> com veio em D de 6 mm, o encaixe mais comum em fogões e placas a gás.</p><ul><li>Veio: D de 6 mm (6 × 4,6 mm)</li><li>Diâmetro: 38 mm</li><li>Material: PETG, resistente ao calor da cozinha</li></ul>",
+    "image": "botoes"
+  },
+  {
+    "sku": "RV-PS-003",
+    "name": "Suportes de prateleira para frigorífico (kit de 4)",
+    "category": "Peças de substituição",
+    "material": "PETG",
+    "price": "6.90",
+    "short": "Quatro suportes em L para prateleiras de vidro, com 5 mm de encaixe.",
+    "description": "<p>Quando um suporte parte, a prateleira inteira deixa de servir. Estes suportes em L seguram prateleiras de vidro até 5 mm de espessura e aguentam até 8 kg cada.</p><ul><li>4 unidades</li><li>Encaixe para vidro até 5 mm</li><li>Material: PETG</li></ul>",
+    "image": "suportes"
+  },
+  {
+    "sku": "RV-PS-004",
+    "name": "Clip de fixação para estore",
+    "category": "Peças de substituição",
+    "material": "PETG",
+    "price": "4.50",
+    "short": "Clip de substituição para calhas de estores de lâminas, montagem sem ferramentas.",
+    "description": "<p>Clip de fixação para a calha superior de estores de lâminas. Encaixa por pressão, sem ferramentas, e mantém o estore alinhado.</p><ul><li>Para calhas de 25 mm</li><li>Material: PETG, resistente ao sol</li></ul>",
+    "image": "clip"
+  },
+  {
+    "sku": "RV-PS-005",
+    "name": "Engrenagem de substituição para batedeira",
+    "category": "Peças de substituição",
+    "material": "PETG",
+    "price": "8.90",
+    "short": "Engrenagem de 24 dentes para batedeiras e varinhas mágicas com o motor ainda em bom estado.",
+    "description": "<p>A engrenagem de plástico é a peça que mais se gasta numa batedeira. Esta versão de <strong>24 dentes</strong> em PETG é mais resistente do que a original e devolve-lhe anos de uso.</p><ul><li>24 dentes, módulo 1</li><li>Furo central de 5 mm</li><li>Material: PETG de alta resistência</li></ul><p>Não sabe qual é o seu modelo? Envie-nos uma foto pelo <a href=\"{site}/index.php/pedir-peca/\">pedido de peça</a>.</p>",
+    "image": "engrenagem"
+  },
+  {
+    "sku": "RV-UT-001",
+    "name": "Organizadores de cabos (kit de 6)",
+    "category": "Utilitários",
+    "material": "PLA",
+    "price": "5.90",
+    "short": "Seis clips adesivos para arrumar cabos na secretária, na bancada ou atrás da televisão.",
+    "description": "<p>Cabos no chão e carregadores perdidos acabaram. Seis clips com base adesiva para cabos até 7 mm de diâmetro.</p><ul><li>6 unidades</li><li>Para cabos até 7 mm</li><li>Material: PLA de origem vegetal</li></ul>",
+    "image": "cabos"
+  },
+  {
+    "sku": "RV-UT-002",
+    "name": "Suporte de parede para ferramentas",
+    "category": "Utilitários",
+    "material": "PETG",
+    "price": "12.90",
+    "sale": "10.90",
+    "short": "Calha de parede com cinco ganchos para chaves de fendas, alicates e pequenas ferramentas.",
+    "description": "<p>Arrume as ferramentas à vista e à mão. Uma calha de 30 cm com <strong>cinco ganchos</strong> amovíveis, para fixar com dois parafusos.</p><ul><li>Comprimento: 30 cm</li><li>5 ganchos amovíveis</li><li>Material: PETG reforçado</li><li>Inclui parafusos e buchas</li></ul>",
+    "image": "ferramentas"
+  },
+  {
+    "sku": "RV-DE-001",
+    "name": "Vaso geométrico Voronoi",
+    "category": "Decoração",
+    "material": "PLA",
+    "price": "18.90",
+    "short": "Vaso decorativo com padrão Voronoi, impossível de fazer com moldes tradicionais.",
+    "description": "<p>Um padrão orgânico de células que só a impressão 3D consegue produzir. Ideal para flores secas ou como peça decorativa.</p><ul><li>Altura: 20 cm</li><li>Material: PLA de origem vegetal</li><li>Inclui recipiente interior para água</li></ul>",
+    "image": "vaso"
+  },
+  {
+    "sku": "RV-DE-002",
+    "name": "Candeeiro de mesa em espiral",
+    "category": "Decoração",
+    "material": "PLA",
+    "price": "34.90",
+    "short": "Candeeiro com abajur em espiral que projeta uma luz suave e quente.",
+    "description": "<p>O abajur em espiral, impresso numa só peça, cria um padrão de luz suave na parede. Base estável e cabo com interruptor.</p><ul><li>Altura: 32 cm</li><li>Casquilho E14 (lâmpada LED não incluída)</li><li>Material: PLA translúcido</li></ul>",
+    "image": "candeeiro"
+  },
+  {
+    "sku": "RV-AT-001",
+    "name": "Suporte ajustável para telemóvel",
+    "category": "Acessórios tecnológicos",
+    "material": "PLA",
+    "price": "9.90",
+    "short": "Suporte de secretária com três ângulos, para videochamadas, receitas ou vídeos.",
+    "description": "<p>Mantenha o telemóvel à altura certa. Três ângulos de inclinação e abertura para o cabo de carregamento.</p><ul><li>Compatível com telemóveis até 7\"</li><li>3 ângulos: 50°, 60° e 70°</li><li>Material: PLA</li></ul>",
+    "image": "telemovel"
+  },
+  {
+    "sku": "RV-AT-002",
+    "name": "Suporte para auscultadores",
+    "category": "Acessórios tecnológicos",
+    "material": "PLA",
+    "price": "14.90",
+    "sale": "12.90",
+    "short": "Suporte de secretária para auscultadores, com arco largo que não deforma a almofada.",
+    "description": "<p>Os auscultadores ficam arrumados e a almofada da banda mantém a forma. Base com peso para não tombar.</p><ul><li>Altura: 26 cm</li><li>Base com pés antiderrapantes</li><li>Material: PLA</li></ul>",
+    "image": "auscultadores"
+  },
+  {
+    "sku": "RV-CO-001",
+    "name": "Farol em miniatura",
+    "category": "Colecionáveis",
+    "material": "Resina",
+    "price": "16.90",
+    "short": "Miniatura de farol com acabamento detalhado em resina, pintada à mão.",
+    "description": "<p>Uma miniatura impressa em <strong>resina</strong>, com detalhe ao décimo de milímetro e pintura à mão. Cada peça é ligeiramente diferente.</p><ul><li>Altura: 12 cm</li><li>Material: resina fotossensível</li><li>Pintura acrílica à mão</li></ul>",
+    "image": "farol"
+  }
+]

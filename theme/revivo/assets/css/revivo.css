@@ -424,14 +424,15 @@ html.rv-search-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.rv-ann-track{animation:none}.rv-ann-set+.rv-ann-set{display:none}}
 
 /* ---------- barra de secções (página Sobre) ---------- */
-.rv-subnav{position:sticky;top:88px;z-index:40;display:flex;justify-content:center;padding:1rem clamp(1rem,4vw,2.5rem);margin:0!important;pointer-events:none}
+/* top: logo abaixo da navbar colada (--rv-nav-bottom vem do revivo.js; sem JS fica 88px) */
+.rv-subnav{position:sticky;top:calc(var(--rv-nav-bottom,60px) + 28px);z-index:40;display:flex;justify-content:center;padding:1rem clamp(1rem,4vw,2.5rem);margin:0!important;pointer-events:none}
 .rv-subnav-in{pointer-events:auto;display:flex;gap:.25rem;padding:.35rem;border-radius:999px;background:var(--rv-glass);border:1px solid var(--rv-line);box-shadow:var(--rv-sh);-webkit-backdrop-filter:saturate(1.6) blur(16px);backdrop-filter:saturate(1.6) blur(16px);overflow-x:auto;max-width:100%;scrollbar-width:none}
 .rv-subnav a{flex:none;padding:.55rem 1rem;border-radius:999px;font-weight:700;font-size:.88rem;color:var(--rv-mut)!important;text-decoration:none!important;transition:background-color .25s,color .25s}
 .rv-subnav a:hover{color:var(--rv-ink2)!important}
 .rv-subnav a.is-active{background:var(--rv-grad);color:#fff!important;box-shadow:var(--rv-glow)}
 .rv-sobre-sec{scroll-margin-top:150px}
 .rv-subnav+.rv-sobre-sec{padding-top:clamp(2.5rem,5vw,4rem)!important}
-@media (max-width:600px){.rv-subnav{top:76px;padding:.6rem .75rem}.rv-subnav a{padding:.5rem .8rem;font-size:.82rem}}
+@media (max-width:600px){.rv-subnav{top:calc(var(--rv-nav-bottom,60px) + 16px);padding:.6rem .75rem}.rv-subnav a{padding:.5rem .8rem;font-size:.82rem}}
 
 /* ---------- modal genérico ---------- */
 .rv-modal{position:fixed;inset:0;z-index:100002;display:grid;place-items:center;padding:1rem}

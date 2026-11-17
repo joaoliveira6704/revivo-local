@@ -86,11 +86,12 @@ O zip leva os URLs do site real (substitui `http://localhost:8080`) e instala-se
 igual até ativares. Para reverter, ativa o Twenty Twenty-Five — os templates que estão na BD
 para esse tema nunca foram apagados.
 
-O upload também pode ser feito por linha de comando (fica inativo, não ativa):
+O upload também pode ser feito por linha de comando. Se o tema já existir, é substituído como no botão
+"Substituir a atual pela carregada" do WP-Admin — **se estiver ativo, a nova versão fica visível logo**:
 
 ```bash
-python3 -I tools/upload-theme.py --dry-run   # testa o login
-python3 -I tools/upload-theme.py             # instala/atualiza o tema no site real
+python3 -I tools/upload.py theme --dry-run   # testa o login, mostra a versão instalada
+python3 -I tools/upload.py theme             # instala/substitui o tema no site real
 ```
 
 Precisa de `WP_LIVE_ADMIN_PASSWORD` no `.env` (password de login do wp-admin, não a application
@@ -105,9 +106,6 @@ password). Depois de usar, o ideal é apagar essa linha do `.env`.
 e em templates do Twenty Twenty-Five). Ficam como histórico e como caminho de recurso; o design
 atual é `theme/revivo`. `design/parts/_legacy/` tem cópias antigas das parts.
 
-**Só no site local:** os 13 produtos de demonstração, o atributo "Material", o cliente de teste
-(`cliente.demo`, senha no `.env`) com 2 encomendas, e o modo "Brevemente" da loja desligado.
-
 ## Plugin "Revivo Pedidos" (pedidos de peças + orçamentos)
 
 Código em `plugins/revivo-pedidos/` (montado no Docker). Guarda cada pedido do formulário "Pedir peça",
@@ -115,8 +113,26 @@ mostra-o ao cliente em **A minha conta → Pedidos de peças** (estado, progress
 dá à equipa o menu **Pedidos de peças** no WP-Admin (lista, filtros por estado, detalhe, caixa de orçamento
 com email ao cliente). Ao aceitar, é criada uma encomenda WooCommerce para pagamento.
 
-Para o site real: `dist/revivo-pedidos.zip` → WP-Admin → Plugins → Adicionar → Carregar plugin → Ativar.
-Refazer o zip: `cd plugins && zip -r ../dist/revivo-pedidos.zip revivo-pedidos`
+Para o site real: `python3 -I tools/upload.py plugin` (instala/substitui e ativa) ou
+`dist/revivo-pedidos.zip` → WP-Admin → Plugins → Adicionar → Carregar plugin → Ativar.
+Refazer o zip (sobe primeiro `Version`/`RVP_VERSION` em `revivo-pedidos.php`):
+`cd plugins && zip -rX ../dist/revivo-pedidos.zip revivo-pedidos -x '*.DS_Store'`
+
+## Produtos de demonstração
+
+12 produtos (peças de substituição, utilitários, decoração, acessórios, colecionáveis) com o atributo
+global "Material" (PLA/PETG/Resina). Os textos estão em `design/products/catalog.json` e as ilustrações em
+`design/products/*.jpg`.
+
+```bash
+python3 -I tools/product-images.py               # (re)gera as ilustrações
+python3 -I tools/seed-products.py local --dry-run
+python3 -I tools/seed-products.py local          # cria no site local
+python3 -I tools/seed-products.py live           # cria no site real
+```
+
+Os SKU que já existem são ignorados, por isso pode correr-se de novo sem duplicar. Usa application
+passwords (`WP_LOCAL_*` / `WP_LIVE_*` no `.env`).
 
 ## Publicar no site real (ordem recomendada)
 
@@ -139,9 +155,9 @@ Refazer o zip: `cd plugins && zip -r ../dist/revivo-pedidos.zip revivo-pedidos`
 
 ## Só no site local
 
-- `wordpress/wp-content/mu-plugins/local-mail-log.php`: em vez de enviar emails, guarda-os em
-  `wordpress/wp-content/rv-mail/` (para ver os emails do plugin). **Não copiar para o site real.**
-- Produtos, avaliações, cliente e encomendas de demonstração; pedido de peça #176 de teste.
+- `wp-config.php`: depois de importar um export do Duplicator, voltar a pôr
+  `define('WP_ENVIRONMENT_TYPE', 'local')` (sem isto as application passwords não funcionam em HTTP)
+  e as definições de debug.
 
 ## Atualizar a cópia local
 
@@ -154,7 +170,8 @@ Se o site real mudar, faz um novo export no Duplicator (WP-Admin real → Duplic
 - `docker-compose.yml`: WordPress + MariaDB + phpMyAdmin + WP-CLI
 - `theme/revivo/`: o tema (design editável em ficheiros + git)
 - `tools/build-theme.py`: empacota o tema em `dist/revivo-theme.zip` para o site real
-- `tools/upload-theme.py`: instala/atualiza o zip no site real (sessão de admin; fica inativo)
+- `tools/upload.py`: instala/substitui o tema ou o plugin no site real (sessão de admin)
+- `tools/product-images.py`, `tools/seed-products.py`: ilustrações e criação dos produtos de demonstração
 - `tools/theme-status.py`: mostra/apaga overrides do Editor do Site na BD
 - `push.sh`, `tools/push.py`: envio de páginas (e do fluxo antigo de templates/CSS) via REST API
 - `.env`: credenciais do site real e do local (**não partilhar**, está no `.gitignore`)

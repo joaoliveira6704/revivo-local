@@ -11,6 +11,16 @@
   function topbar() { if (tb) r.style.setProperty('--rv-topbar-h', tb.offsetHeight + 'px'); }
   topbar(); addEventListener('resize', topbar);
 
+  /* fundo da navbar quando está colada ao topo (muda com a barra de admin e com sessão iniciada):
+     o submenu das páginas (.rv-subnav) fica a seguir a ela em vez de a uma altura fixa */
+  function navBottom() {
+    if (!hdr) return;
+    var nav = hdr.querySelector('.rv-navwrap') || hdr;
+    var stuck = parseFloat(getComputedStyle(hdr).top) || 0;
+    r.style.setProperty('--rv-nav-bottom', Math.round(stuck + nav.getBoundingClientRect().bottom - hdr.getBoundingClientRect().top) + 'px');
+  }
+  navBottom(); addEventListener('resize', navBottom); addEventListener('load', navBottom);
+
   /* barra de progresso, header com sombra e linha do "como funciona" */
   var bar = d.createElement('div'); bar.className = 'rv-progress'; bar.setAttribute('aria-hidden', 'true'); d.body.appendChild(bar);
   var steps = d.querySelectorAll('.rv-steps'), ticking = false;
@@ -83,16 +93,25 @@
     last.appendChild(el('p', 'rv-dash-k', 'Última encomenda'));
     var body = el('div', 'rv-dash-last-body', 'A carregar…'); last.appendChild(body); box.appendChild(last);
 
+    // ícones com os mesmos traços do menu lateral (base.css / shop.css)
+    var icons = {
+      box: '<path d="M12 2.8 20 7.2v9.6L12 21.2 4 16.8V7.2z"/><path d="M4 7.2l8 4.4 8-4.4M12 11.6v9.6"/>',
+      wrench: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>',
+      pin: '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
+      user: '<circle cx="12" cy="8" r="4"/><path d="M4 20.5c1.5-4 4.5-6 8-6s6.5 2 8 6"/>'
+    };
     // com o plugin Revivo Pedidos ativo, o atalho leva aos pedidos (que têm o botão "Novo pedido")
-    var peca = links.pedidos ? ['pedidos', 'Pedidos de peças', 'Orçamentos e estado', '✦'] : ['pedir', 'Pedir uma peça', 'Orçamento à medida', '✦'];
-    var tiles = [['orders', 'Encomendas', 'Histórico e estado', '📦'], peca,
-      ['edit-address', 'Moradas', 'Faturação e envio', '📍'], ['edit-account', 'Detalhes da conta', 'Nome, email e senha', '👤']];
+    var peca = links.pedidos ? ['pedidos', 'Pedidos de peças', 'Orçamentos e estado', 'wrench'] : ['pedir', 'Pedir uma peça', 'Orçamento à medida', 'wrench'];
+    var tiles = [['orders', 'Encomendas', 'Histórico e estado', 'box'], peca,
+      ['edit-address', 'Moradas', 'Faturação e envio', 'pin'], ['edit-account', 'Detalhes da conta', 'Nome, email e senha', 'user']];
     var pedir = d.querySelector('.rv-hbtn'); if (pedir) links.pedir = pedir.href;
     var grid = el('div', 'rv-dash-grid');
     tiles.forEach(function (t) {
       if (!links[t[0]]) return;
       var a = el('a', 'rv-dash-tile'); a.href = links[t[0]];
-      a.appendChild(el('span', 'rv-dash-ico', t[3])); a.appendChild(el('b', '', t[1])); a.appendChild(el('span', 'rv-dash-desc', t[2]));
+      var ico = el('span', 'rv-dash-ico'); ico.setAttribute('aria-hidden', 'true');
+      ico.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + icons[t[3]] + '</svg>';
+      a.appendChild(ico); a.appendChild(el('b', '', t[1])); a.appendChild(el('span', 'rv-dash-desc', t[2]));
       grid.appendChild(a);
     });
     box.appendChild(grid);

@@ -182,7 +182,9 @@ html.rv-darkmode .rv-prose p{color:#A9AFB7}
 
 /* ---------- como funciona ---------- */
 .rv-steps{gap:1.6rem}
-.rv-steps::before{top:27px;height:2px;border:0;border-radius:2px;background:linear-gradient(90deg,var(--rv-o) 0,var(--rv-o3) var(--p,0%),rgba(255,255,255,.1) var(--p,0%))}
+/* a linha vai do centro do primeiro quadrado (56px) ao centro do último: "Entrega" é o fim
+   (4 colunas iguais com 1.6rem de intervalo → o último centro fica a uma coluna menos 28px da direita) */
+.rv-steps::before{top:27px;left:28px;right:calc((100% - 4.8rem) / 4 - 28px);height:2px;border:0;border-radius:2px;background:linear-gradient(90deg,var(--rv-o) 0,var(--rv-o3) var(--p,0%),rgba(255,255,255,.1) var(--p,0%))}
 .rv-step .rv-icon{width:56px;height:56px;border-radius:18px;background:var(--rv-grad);border:0;color:#fff;box-shadow:0 0 0 8px var(--rv-ink),var(--rv-glow)}
 html.rv-darkmode .rv-step .rv-icon{box-shadow:0 0 0 8px var(--rv-ink),var(--rv-glow)}
 .rv-step:hover .rv-icon{transform:translateY(-4px) rotate(-6deg)}

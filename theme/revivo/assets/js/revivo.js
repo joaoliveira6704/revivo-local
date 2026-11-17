@@ -35,10 +35,11 @@
       s.style.setProperty('--p', (p * 100).toFixed(1) + '%');
       /* cada passo acende quando a linha chega ao centro do quadrado
          (sem linha, em ecrãs pequenos: quando o quadrado entra no ecrã) */
-      var line = getComputedStyle(s, '::before').display !== 'none';
+      var lc = getComputedStyle(s, '::before'), line = lc.display !== 'none';
+      var l0 = parseFloat(lc.left) || 0, len = b.width - l0 - (parseFloat(lc.right) || 0);
       s.querySelectorAll('.rv-step').forEach(function (st) {
         var ic = (st.querySelector('.rv-icon') || st).getBoundingClientRect();
-        var on = reduce || (line ? p * b.width >= ic.left + ic.width / 2 - b.left : innerHeight * .8 > ic.top);
+        var on = reduce || (line ? l0 + p * len + 1 >= ic.left + ic.width / 2 - b.left : innerHeight * .8 > ic.top);
         st.classList.toggle('is-on', on);
       });
     });

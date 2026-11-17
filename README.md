@@ -134,6 +134,20 @@ python3 -I tools/seed-products.py live           # cria no site real
 Os SKU que já existem são ignorados, por isso pode correr-se de novo sem duplicar. Usa application
 passwords (`WP_LOCAL_*` / `WP_LIVE_*` no `.env`).
 
+### Dados mock (clientes, encomendas, avaliações, pedidos de peças)
+
+```bash
+python3 -I tools/seed-mock.py local --dry-run
+python3 -I tools/seed-mock.py live
+```
+
+6 clientes com emails `@example.test` (senha em `WP_MOCK_PASSWORD` no `.env`), 12 encomendas com estados e
+datas variados (meta `_rv_mock=1`), 12 avaliações (10 de compra verificada) e 6 pedidos de peças enviados pelo
+formulário real e avançados no WP-Admin (novo, análise, orçamento, concluído, recusado). Os emails do
+WooCommerce ficam desligados durante a criação; o Contact Form 7 envia ao administrador o email normal de
+cada pedido. Clientes que já existam são ignorados. Precisa também de `WP_{LOCAL,LIVE}_ADMIN_PASSWORD`.
+O servidor da escola bloqueia `PUT`/`DELETE`: os scripts usam `POST`.
+
 ## Publicar no site real (ordem recomendada)
 
 1. Carregar e ativar `dist/revivo-pedidos.zip` (a área de pedidos depende dele).

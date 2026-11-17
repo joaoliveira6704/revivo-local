@@ -4,50 +4,48 @@
   "settings": {
     "appearanceTools": true,
     "color": {
-      "palette": {
-        "theme": [
-          {
-            "slug": "base",
-            "name": "Base",
-            "color": "#F7F6F2"
-          },
-          {
-            "slug": "contrast",
-            "name": "Contraste",
-            "color": "#1C1F23"
-          },
-          {
-            "slug": "accent-1",
-            "name": "Laranja filamento",
-            "color": "#F2611D"
-          },
-          {
-            "slug": "accent-2",
-            "name": "Verde reparação",
-            "color": "#2E7D5B"
-          },
-          {
-            "slug": "accent-3",
-            "name": "Grafite",
-            "color": "#2B3036"
-          },
-          {
-            "slug": "accent-4",
-            "name": "Cinza",
-            "color": "#5F6670"
-          },
-          {
-            "slug": "accent-5",
-            "name": "Laranja claro",
-            "color": "#FDE6D8"
-          },
-          {
-            "slug": "accent-6",
-            "name": "Pedra",
-            "color": "#ECEDE8"
-          }
-        ]
-      },
+      "palette": [
+        {
+          "slug": "base",
+          "name": "Base",
+          "color": "#F7F6F2"
+        },
+        {
+          "slug": "contrast",
+          "name": "Contraste",
+          "color": "#1C1F23"
+        },
+        {
+          "slug": "accent-1",
+          "name": "Laranja filamento",
+          "color": "#F2611D"
+        },
+        {
+          "slug": "accent-2",
+          "name": "Verde reparação",
+          "color": "#2E7D5B"
+        },
+        {
+          "slug": "accent-3",
+          "name": "Grafite",
+          "color": "#2B3036"
+        },
+        {
+          "slug": "accent-4",
+          "name": "Cinza",
+          "color": "#5F6670"
+        },
+        {
+          "slug": "accent-5",
+          "name": "Laranja claro",
+          "color": "#FDE6D8"
+        },
+        {
+          "slug": "accent-6",
+          "name": "Pedra",
+          "color": "#ECEDE8"
+        }
+      ],
       "defaultPalette": false,
       "defaultGradients": false,
       "defaultDuotone": false

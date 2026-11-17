@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
-Aplica o design (design/*.css, design/revivo.js) ao WordPress LOCAL.
+LEGADO — o design atual é o tema em theme/revivo (ver README).
+
+Aplica o design antigo (design/*.css, design/revivo.js) ao WordPress LOCAL,
+escrevendo nos Global Styles e nos templates do Twenty Twenty-Five.
 
   python3 -I design/apply.py          aplica CSS + JS
   python3 -I design/apply.py css      só o CSS

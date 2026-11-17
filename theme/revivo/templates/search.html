@@ -1,0 +1,82 @@
+<!-- wp:template-part {"slug":"header","theme":"revivo","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"rv-main rv-search-page","layout":{"type":"default"}} -->
+<main class="wp-block-group rv-main rv-search-page">
+<!-- wp:group {"align":"full","className":"rv-pagehero rv-shophero rv-searchhero rv-dark rv-gridbg","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull rv-pagehero rv-shophero rv-searchhero rv-dark rv-gridbg">
+<!-- wp:group {"align":"wide","className":"rv-wrap rv-shophero-grid","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide rv-wrap rv-shophero-grid">
+<!-- wp:group {"className":"rv-shophero-text","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-shophero-text">
+<!-- wp:woocommerce/breadcrumbs {"className":"rv-eyebrow rv-hero-crumbs"} /-->
+<!-- wp:query-title {"type":"search","className":"rv-search-title"} /-->
+<!-- wp:paragraph {"className":"rv-lead rv-search-lead"} -->
+<p class="rv-lead rv-search-lead">Páginas e produtos da Revivo que correspondem à sua pesquisa.</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+<!-- wp:search {"label":"Pesquisar","showLabel":false,"placeholder":"Pesquisar outra vez…","buttonText":"Pesquisar","buttonUseIcon":true,"className":"rv-shop-search"} /-->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","className":"rv-section rv-search-results","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull rv-section rv-search-results">
+<!-- wp:group {"align":"wide","className":"rv-wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide rv-wrap">
+<!-- wp:query {"queryId":2,"query":{"perPage":12,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"relevance","inherit":true},"className":"rv-sr"} -->
+<div class="wp-block-query rv-sr">
+<!-- wp:post-template {"className":"rv-sr-list","layout":{"type":"default"}} -->
+<!-- wp:group {"className":"rv-sr-card","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-sr-card">
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"1","className":"rv-sr-img"} /-->
+<!-- wp:group {"className":"rv-sr-body","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-sr-body">
+<!-- wp:post-title {"level":3,"isLink":true,"className":"rv-sr-title"} /-->
+<!-- wp:post-excerpt {"excerptLength":26,"className":"rv-sr-excerpt"} /-->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination {"className":"rv-pagination","layout":{"type":"flex","justifyContent":"center"}} -->
+<!-- wp:query-pagination-previous {"label":"Anterior"} /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next {"label":"Seguinte"} /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:group {"className":"rv-noresults rv-sr-empty","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-noresults rv-sr-empty">
+<!-- wp:html -->
+<div class="rv-sr-empty-ico" aria-hidden="true">⌕</div>
+<!-- /wp:html -->
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Não encontrámos nada</h3>
+<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p>Experimente palavras mais simples (ex.: “engrenagem”, “puxador”, “vaso”) ou explore a loja. Se a peça não existir, nós modelamo-la.</p>
+<!-- /wp:paragraph -->
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="http://localhost:8080/index.php/shop/">Ver a loja</a></div>
+<!-- /wp:button -->
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="http://localhost:8080/index.php/pedir-peca/">Pedir uma peça</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+</div>
+<!-- /wp:group -->
+<!-- /wp:query-no-results -->
+</div>
+<!-- /wp:query -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","theme":"revivo","tagName":"footer"} /-->

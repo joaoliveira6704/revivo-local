@@ -1,0 +1,22 @@
+/*
+Theme Name: Revivo
+Theme URI: https://trabalhos.esmad.ipp.pt/~tdw/26-27/nec/wp-group06/
+Author: Grupo 6 — Tecnologias e Desenvolvimento Web (ESMAD)
+Description: Tema de blocos do projeto Revivo — impressão 3D para reparar em vez de substituir. Standalone: inclui templates, template parts, tipografia (Manrope e Fira Code) e o CSS/JS do design 2.0.
+Requires at least: 6.5
+Tested up to: 7.1
+Requires PHP: 7.4
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: revivo
+Tags: block-template, block-styles, wide-blocks, full-site-editing, e-commerce, accessibility-ready
+*/
+
+/*
+ * Este ficheiro é só metadata (o WordPress usa-o para identificar o tema).
+ * O CSS do design está em assets/css/ e é carregado por functions.php:
+ *   assets/css/base.css   — CSS original do site
+ *   assets/css/revivo.css — camada Revivo 2.0 (tokens, header, hero, cartões, modo escuro)
+ *   assets/css/shop.css   — loja, produto, carrinho, checkout, conta
+ */

@@ -20,7 +20,8 @@ WP-CLI: `docker compose run --rm cli wp <comando>` (ex.: `wp plugin list`).
 
 ## Fluxo de trabalho
 
-1. Faz as alterações no site local (Editor do Site, páginas, CSS adicional…).
+1. Faz as alterações no site local: **design em `theme/revivo/`** (ver secção seguinte), conteúdo de
+   páginas no Editor do Site. Ver `python3 -I tools/theme-status.py` se o Editor do Site esconder ficheiros.
 2. Vê o que mudou em relação ao site real:
    ```bash
    ./push.sh diff                  # lista
@@ -28,40 +29,71 @@ WP-CLI: `docker compose run --rm cli wp <comando>` (ex.: `wp plugin list`).
    ```
 3. Envia:
    ```bash
-   ./push.sh css                   # Global Styles / CSS adicional
-   ./push.sh part header           # template parts (header, footer…)
-   ./push.sh template page         # templates
-   ./push.sh page pedir-peca       # páginas
-   ./push.sh all                   # tudo o que estiver diferente
+   python3 -I tools/build-theme.py  # tema → dist/revivo-theme.zip (WP-Admin)
+   ./push.sh page pedir-peca        # páginas
+   ./push.sh all                    # tudo o que estiver diferente
    ```
 
 O script troca `http://localhost:8080` pelo endereço real, guarda a versão do site real em
 `backups/<data-hora>/` antes de escrever e pede confirmação (`-y` para não perguntar).
 
-**Não é enviado pelo script:** produtos e encomendas WooCommerce, media, menus `wp_navigation`,
-formulários Contact Form 7, definições de plugins e utilizadores. Isso faz-se no WP-Admin do site real.
+**Não é enviado pelo script:** o tema (vai por zip no WP-Admin), produtos e encomendas WooCommerce,
+media, menus `wp_navigation`, formulários Contact Form 7, definições de plugins e utilizadores.
+Isso faz-se no WP-Admin do site real.
 
-## Design (Revivo 2.0)
+## Design (tema `theme/revivo`)
 
-O design vive em ficheiros em `design/` e aplica-se ao site local com um comando:
+O design é um **tema de blocos autónomo** em `theme/revivo`, montado no Docker em
+`wp-content/themes/revivo`. Editas ficheiros, recarregas a página — não há nada a aplicar na base de dados.
 
 ```bash
-python3 -I design/apply.py              # tudo
-python3 -I design/apply.py css          # só CSS
-python3 -I design/apply.py js           # só JS (vai para o footer)
-python3 -I design/apply.py templates    # loja, produto, carrinho, checkout
+docker compose up -d          # uma vez, para montar ./theme/revivo no container
+# editar theme/revivo/... e recarregar http://localhost:8080
 ```
 
 | Ficheiro | O quê |
 |---|---|
-| `design/custom.original.css` | CSS original do site (base, não mexer) |
-| `design/revivo-v2.css` | camada 2.0: tokens, header flutuante, hero, cartões, animações, modo escuro |
-| `design/revivo-shop.css` | loja, filtros, produto, carrinho, checkout, "A minha conta" |
-| `design/revivo.js` | interações: progresso, header, luz nos cartões, contadores, animações, −/+ quantidade, painel de cliente |
-| `design/templates/*.html` | templates WooCommerce (catálogo com filtros, produto, carrinho, checkout) |
-| `design/demo/` | produtos de demonstração **só para o local** (`seed.php`, imagens) |
+| `theme/revivo/style.css` | metadata do tema (nome, versão) |
+| `theme/revivo/theme.json` | paleta, tipografia (Manrope + Fira Code), estilos base |
+| `theme/revivo/functions.php` | carrega o CSS/JS do tema e declara suporte WooCommerce |
+| `theme/revivo/templates/*.html` | front-page, página, loja, produto, carrinho, checkout, pesquisa, 404… |
+| `theme/revivo/parts/header.html`, `parts/footer.html` | cabeçalho (avisos, menu, pesquisa, tema claro/escuro) e rodapé |
+| `theme/revivo/assets/css/base.css` | CSS original do site (base, não mexer) |
+| `theme/revivo/assets/css/revivo.css` | camada 2.0: tokens, header flutuante, hero, cartões, animações, modo escuro |
+| `theme/revivo/assets/css/shop.css` | loja, filtros, produto, carrinho, checkout, "A minha conta" |
+| `theme/revivo/assets/js/revivo.js` | interações: progresso, header, luz nos cartões, contadores, animações, −/+ quantidade, painel de cliente |
+| `theme/revivo/assets/fonts/` | Manrope e Fira Code (self-hosted, sem dependência do Twenty Twenty-Five) |
 
-Depois de aplicar: `./push.sh diff` e `./push.sh all` (ou um a um) para enviar para o site real.
+### Editar sem que a base de dados esconda os ficheiros
+
+O Editor do Site guarda alterações na BD e essas cópias passam a esconder os ficheiros do tema.
+Como o design é gerido em ficheiros + git:
+
+```bash
+python3 -I tools/theme-status.py           # ver overrides na BD
+python3 -I tools/theme-status.py --reset   # apagar e voltar aos ficheiros
+```
+
+### Instalar no site real
+
+```bash
+python3 -I tools/build-theme.py                 # dist/revivo-theme.zip
+python3 -I tools/build-theme.py --bump patch     # sobe a versão e empacota
+```
+
+O zip leva os URLs do site real (substitui `http://localhost:8080`) e instala-se em
+**WP-Admin → Aparência → Temas → Adicionar → Carregar tema**. Fica **inativo**: o site continua
+igual até ativares. Para reverter, ativa o Twenty Twenty-Five — os templates que estão na BD
+para esse tema nunca foram apagados.
+
+`theme/revivo/screenshot.png` gera-se com `swift tools/make-screenshot.swift theme/revivo/screenshot.png`.
+
+### Legado (fluxo anterior, na base de dados)
+
+`design/apply.py` e `design/templates/`, `design/custom.original.css`, `design/revivo-v2.css`,
+`design/revivo-shop.css`, `design/revivo.js` são o fluxo antigo (escrevia o design nos Global Styles
+e em templates do Twenty Twenty-Five). Ficam como histórico e como caminho de recurso; o design
+atual é `theme/revivo`. `design/parts/_legacy/` tem cópias antigas das parts.
 
 **Só no site local:** os 13 produtos de demonstração, o atributo "Material", o cliente de teste
 (`cliente.demo`, senha no `.env`) com 2 encomendas, e o modo "Brevemente" da loja desligado.
@@ -79,8 +111,11 @@ Refazer o zip: `cd plugins && zip -r ../dist/revivo-pedidos.zip revivo-pedidos`
 ## Publicar no site real (ordem recomendada)
 
 1. Carregar e ativar `dist/revivo-pedidos.zip` (a área de pedidos depende dele).
-2. `./push.sh all` — CSS, header/footer (logótipo, pesquisa, JS), páginas (inclui as legais) e templates da loja.
-3. No WP-Admin real (não é enviado pelo script):
+2. **Tema:** carregar `dist/revivo-theme.zip` em **Aparência → Temas → Adicionar → Carregar tema**
+   (fica inativo). Pré-visualizar e só depois **Ativar**. Ter o Twenty Twenty-Five instalado é o rollback.
+3. `./push.sh all` — com o tema ativo, `css`, `part` e `template` deixam de ser usados; interessa o
+   envio de **páginas** (`./push.sh page <slug>` ou `./push.sh all` para o que estiver diferente).
+4. No WP-Admin real (não é enviado pelo script):
    - **Definições → Privacidade:** escolher "Política de Privacidade".
    - **WooCommerce → Definições → Avançado:** página de Termos = "Termos e Condições".
    - **WooCommerce → Pagamentos:** títulos em português (Transferência bancária, Cheque, Pagamento na entrega).
@@ -107,7 +142,10 @@ Se o site real mudar, faz um novo export no Duplicator (WP-Admin real → Duplic
 ## Ficheiros
 
 - `docker-compose.yml`: WordPress + MariaDB + phpMyAdmin + WP-CLI
-- `push.sh`, `tools/push.py`: envio para o site real (REST API)
+- `theme/revivo/`: o tema (design editável em ficheiros + git)
+- `tools/build-theme.py`: empacota o tema em `dist/revivo-theme.zip` para o site real
+- `tools/theme-status.py`: mostra/apaga overrides do Editor do Site na BD
+- `push.sh`, `tools/push.py`: envio de páginas (e do fluxo antigo de templates/CSS) via REST API
 - `.env`: credenciais do site real e do local (**não partilhar**, está no `.gitignore`)
 - `config/harica-geant-tls-r1.pem`: certificado intermédio que o servidor da escola não envia
   (permite verificar o HTTPS em vez de o desligar)

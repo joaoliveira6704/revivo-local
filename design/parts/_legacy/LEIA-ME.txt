@@ -1,0 +1,8 @@
+Cópias antigas das template parts / templates, substituídas pelo tema em theme/revivo.
+
+O design atual vive em theme/revivo:
+  parts/header.html, parts/footer.html   (template parts)
+  templates/*.html                       (templates)
+  assets/css/*.css, assets/js/revivo.js    (CSS e JS)
+
+Estes ficheiros ficam só como histórico. Não são lidos por apply.py.

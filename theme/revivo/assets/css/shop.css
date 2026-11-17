@@ -346,6 +346,9 @@ html.rv-darkmode .rv-flow :is(.wc-block-components-main,.wc-block-components-sid
 .rv-account .woocommerce-MyAccount-navigation a{border-radius:12px!important;transition:background-color .25s,color .25s,transform .25s var(--rv-ease)}
 .rv-account .woocommerce-MyAccount-navigation .is-active a{background:var(--rv-grad)!important;box-shadow:var(--rv-glow)}
 .rv-account .woocommerce-MyAccount-navigation li:not(.is-active) a:hover{transform:translateX(3px)}
+/* o woocommerce-blocktheme.css (carregado depois do tema) dá padding:1em 0 a cada item e margem de 2em à lista */
+.rv-account .woocommerce-MyAccount-navigation ul li{padding:0}
+.rv-account nav.woocommerce-MyAccount-navigation ul{margin:0}
 .rv-account .woocommerce-MyAccount-content{border-radius:var(--rv-r)!important;box-shadow:var(--rv-sh)!important;border:1px solid var(--rv-line)!important}
 /* painel */
 .rv-dash{display:grid;grid-template-columns:1.2fr 1fr;gap:1rem;margin-bottom:.5rem}
@@ -661,7 +664,7 @@ html.rv-darkmode .rv-thanks-next{background:#050607;border:1px solid var(--rv-li
 .rv-mc-ship.is-free b{background:linear-gradient(120deg,#1F9D6B,#4CC48F)}
 .wc-block-mini-cart__items{padding:.4rem 1.5rem 1rem!important}
 .wc-block-mini-cart__products-table .wc-block-cart-items__header{display:none}
-.wc-block-mini-cart__products-table .wc-block-cart-items__row{display:grid!important;grid-template-columns:72px 1fr auto;gap:0 .9rem;align-items:start;padding:.9rem!important;margin:0 0 .6rem!important;border-radius:18px;background:var(--rv-surface);border:1px solid var(--rv-line);box-shadow:var(--rv-sh)}
+.wc-block-mini-cart__products-table .wc-block-cart-items__row{display:grid!important;grid-template-columns:72px 1fr auto!important;gap:0 .9rem!important;align-items:start;padding:.9rem!important;margin:0 0 .6rem!important;border-radius:18px;background:var(--rv-surface);border:1px solid var(--rv-line);box-shadow:var(--rv-sh)}
 .wc-block-mini-cart__products-table .wc-block-cart-items__row>td{padding:0!important;border:0!important}
 .wc-block-mini-cart__products-table .wc-block-cart-item__image img{width:72px!important;max-width:72px;border-radius:14px;background:var(--rv-surface2)}
 .wc-block-mini-cart__products-table .wc-block-components-product-name{font-size:.95rem!important;font-weight:800;letter-spacing:-.02em;color:var(--rv-ink2)!important;text-decoration:none!important;line-height:1.25}

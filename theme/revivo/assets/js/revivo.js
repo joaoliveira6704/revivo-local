@@ -65,8 +65,10 @@
       var k = (li.className.match(/navigation-link--([\w-]+)/) || [])[1], a = li.querySelector('a');
       if (k && a) links[k] = a.href;
     });
-    var strong = content.querySelector('p strong'), name = strong ? strong.textContent.trim() : '';
-    var first = name.split(/\s+/)[0] || '', ini = name.split(/\s+/).filter(Boolean).slice(0, 2).map(function (s) { return s[0]; }).join('').toUpperCase();
+    // primeiro nome do perfil (functions.php); sem ele, a saudação fica "Olá!" e as iniciais vêm do nome público
+    var user = window.rvUser || {}, first = user.first || '';
+    var strong = content.querySelector('p strong'), name = first ? first + ' ' + (user.last || '') : (strong ? strong.textContent.trim() : '');
+    var ini = name.split(/\s+/).filter(Boolean).slice(0, 2).map(function (s) { return s[0]; }).join('').toUpperCase();
     function el(tag, cls, text) { var e = d.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 
     var box = el('div', 'rv-dash');
@@ -81,7 +83,9 @@
     last.appendChild(el('p', 'rv-dash-k', 'Última encomenda'));
     var body = el('div', 'rv-dash-last-body', 'A carregar…'); last.appendChild(body); box.appendChild(last);
 
-    var tiles = [['orders', 'Encomendas', 'Histórico e estado', '📦'], ['pedir', 'Pedir uma peça', 'Orçamento à medida', '✦'],
+    // com o plugin Revivo Pedidos ativo, o atalho leva aos pedidos (que têm o botão "Novo pedido")
+    var peca = links.pedidos ? ['pedidos', 'Pedidos de peças', 'Orçamentos e estado', '✦'] : ['pedir', 'Pedir uma peça', 'Orçamento à medida', '✦'];
+    var tiles = [['orders', 'Encomendas', 'Histórico e estado', '📦'], peca,
       ['edit-address', 'Moradas', 'Faturação e envio', '📍'], ['edit-account', 'Detalhes da conta', 'Nome, email e senha', '👤']];
     var pedir = d.querySelector('.rv-hbtn'); if (pedir) links.pedir = pedir.href;
     var grid = el('div', 'rv-dash-grid');

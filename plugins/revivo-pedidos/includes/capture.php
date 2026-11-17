@@ -101,10 +101,21 @@ add_filter('wpcf7_form_elements', function ($html) {
 	return $note . $html;
 });
 
-/** Pré-preenche nome e email de quem tem sessão iniciada. */
+/** Nome completo de quem tem sessão iniciada: perfil → faturação WooCommerce → nome público. */
+function rvp_user_full_name(WP_User $u): string {
+	$name = trim($u->first_name . ' ' . $u->last_name);
+	if ($name === '') $name = trim(get_user_meta($u->ID, 'billing_first_name', true) . ' ' . get_user_meta($u->ID, 'billing_last_name', true));
+	return $name !== '' ? $name : $u->display_name;
+}
+
+/** Pré-preenche nome e email de quem tem sessão iniciada (o nome chega ao campo como atributo do shortcode). */
+add_filter('shortcode_atts_wpcf7', function ($out) {
+	if (is_user_logged_in()) $out['nome'] = rvp_user_full_name(wp_get_current_user());
+	return $out;
+});
 add_filter('wpcf7_form_tag', function ($tag) {
 	if (!is_user_logged_in() || empty($tag['name'])) return $tag;
-	if ($tag['name'] === 'nome') $tag['options'][] = 'default:user_display_name';
+	if ($tag['name'] === 'nome') $tag['options'][] = 'default:shortcode_attr';
 	if ($tag['name'] === 'email') $tag['options'][] = 'default:user_email';
 	return $tag;
 });

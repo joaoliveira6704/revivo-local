@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Revivo Pedidos
  * Description:       Pedidos de peças à medida: guarda os pedidos do formulário "Pedir peça", mostra-os ao cliente em "A minha conta → Pedidos" e permite à equipa enviar orçamentos. Ao aceitar, é criada uma encomenda WooCommerce para pagamento.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Revivo — Grupo 6 (TDW · ESMAD)
  * Requires at least: 6.5
  * Requires PHP:      8.0
@@ -11,7 +11,7 @@
 
 defined('ABSPATH') || exit;
 
-define('RVP_VERSION', '1.0.0');
+define('RVP_VERSION', '1.0.1');
 define('RVP_FILE', __FILE__);
 define('RVP_DIR', plugin_dir_path(__FILE__));
 define('RVP_URL', plugin_dir_url(__FILE__));

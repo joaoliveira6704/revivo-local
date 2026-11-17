@@ -59,5 +59,20 @@ function revivo_assets() {
 	wp_enqueue_style( 'revivo-shop', $uri . '/assets/css/shop.css', array( 'revivo' ), $version );
 
 	wp_enqueue_script( 'revivo', $uri . '/assets/js/revivo.js', array(), $version, true );
+
+	// Painel de cliente: primeiro e último nome do perfil, para a saudação.
+	if ( is_user_logged_in() && function_exists( 'is_account_page' ) && is_account_page() ) {
+		$user = wp_get_current_user();
+		wp_add_inline_script(
+			'revivo',
+			'window.rvUser = ' . wp_json_encode(
+				array(
+					'first' => trim( $user->first_name ),
+					'last'  => trim( $user->last_name ),
+				)
+			) . ';',
+			'before'
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'revivo_assets', 5 );

@@ -86,6 +86,16 @@ O zip leva os URLs do site real (substitui `http://localhost:8080`) e instala-se
 igual até ativares. Para reverter, ativa o Twenty Twenty-Five — os templates que estão na BD
 para esse tema nunca foram apagados.
 
+O upload também pode ser feito por linha de comando (fica inativo, não ativa):
+
+```bash
+python3 -I tools/upload-theme.py --dry-run   # testa o login
+python3 -I tools/upload-theme.py             # instala/atualiza o tema no site real
+```
+
+Precisa de `WP_LIVE_ADMIN_PASSWORD` no `.env` (password de login do wp-admin, não a application
+password). Depois de usar, o ideal é apagar essa linha do `.env`.
+
 `theme/revivo/screenshot.png` gera-se com `swift tools/make-screenshot.swift theme/revivo/screenshot.png`.
 
 ### Legado (fluxo anterior, na base de dados)
@@ -144,6 +154,7 @@ Se o site real mudar, faz um novo export no Duplicator (WP-Admin real → Duplic
 - `docker-compose.yml`: WordPress + MariaDB + phpMyAdmin + WP-CLI
 - `theme/revivo/`: o tema (design editável em ficheiros + git)
 - `tools/build-theme.py`: empacota o tema em `dist/revivo-theme.zip` para o site real
+- `tools/upload-theme.py`: instala/atualiza o zip no site real (sessão de admin; fica inativo)
 - `tools/theme-status.py`: mostra/apaga overrides do Editor do Site na BD
 - `push.sh`, `tools/push.py`: envio de páginas (e do fluxo antigo de templates/CSS) via REST API
 - `.env`: credenciais do site real e do local (**não partilhar**, está no `.gitignore`)

@@ -1,0 +1,162 @@
+<!-- wp:template-part {"slug":"header","theme":"twentytwentyfive","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"rv-main rv-shop-page rv-search-page","layout":{"type":"default"}} -->
+<main class="wp-block-group rv-main rv-shop-page rv-search-page">
+
+<!-- wp:group {"align":"full","className":"rv-pagehero rv-shophero rv-searchhero rv-dark rv-gridbg","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull rv-pagehero rv-shophero rv-searchhero rv-dark rv-gridbg">
+<!-- wp:group {"align":"wide","className":"rv-wrap rv-shophero-grid","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide rv-wrap rv-shophero-grid">
+<!-- wp:group {"className":"rv-shophero-text","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-shophero-text">
+<!-- wp:woocommerce/breadcrumbs {"className":"rv-eyebrow rv-hero-crumbs"} /-->
+<!-- wp:query-title {"type":"search","className":"rv-search-title"} /-->
+<!-- wp:paragraph {"className":"rv-lead rv-search-lead"} -->
+<p class="rv-lead rv-search-lead">Resultados na loja. Não encontra o que procura? <a href="http://localhost:8080/index.php/pedir-peca/">Peça-nos a peça à medida</a>.</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+<!-- wp:search {"label":"Pesquisar produtos","showLabel":false,"placeholder":"Pesquisar outra vez…","buttonText":"Pesquisar","buttonUseIcon":true,"query":{"post_type":"product"},"className":"rv-shop-search"} /-->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","className":"rv-section rv-shop","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull rv-section rv-shop">
+<!-- wp:group {"align":"wide","className":"rv-wrap rv-shop-grid","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide rv-wrap rv-shop-grid">
+
+<!-- wp:group {"tagName":"aside","className":"rv-shop-side","layout":{"type":"default"}} -->
+<aside class="wp-block-group rv-shop-side">
+<!-- wp:woocommerce/product-filters -->
+<div class="wp-block-woocommerce-product-filters">
+<!-- wp:heading {"level":2,"className":"rv-filters-title"} -->
+<h2 class="wp-block-heading rv-filters-title">Filtros</h2>
+<!-- /wp:heading -->
+
+<!-- wp:woocommerce/product-filter-active -->
+<div class="wp-block-woocommerce-product-filter-active">
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Filtros ativos</h3>
+<!-- /wp:heading -->
+<!-- wp:woocommerce/product-filter-removable-chips /-->
+<!-- wp:woocommerce/product-filter-clear-button -->
+<div class="wp-block-woocommerce-product-filter-clear-button">
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline rv-clear"} -->
+<div class="wp-block-button is-style-outline rv-clear"><a class="wp-block-button__link wp-element-button">Limpar tudo</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+</div>
+<!-- /wp:woocommerce/product-filter-clear-button -->
+</div>
+<!-- /wp:woocommerce/product-filter-active -->
+
+<!-- wp:woocommerce/product-filter-taxonomy {"taxonomy":"product_cat","showCounts":true,"sortOrder":"name-asc"} -->
+<div class="wp-block-woocommerce-product-filter-taxonomy">
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Categoria</h3>
+<!-- /wp:heading -->
+<!-- wp:woocommerce/product-filter-checkbox-list /-->
+</div>
+<!-- /wp:woocommerce/product-filter-taxonomy -->
+
+<!-- wp:woocommerce/product-filter-attribute {"attributeId":1,"showCounts":true,"displayStyle":"woocommerce/product-filter-chips","sortOrder":"name-asc"} -->
+<div class="wp-block-woocommerce-product-filter-attribute">
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Material</h3>
+<!-- /wp:heading -->
+<!-- wp:woocommerce/product-filter-chips /-->
+</div>
+<!-- /wp:woocommerce/product-filter-attribute -->
+
+<!-- wp:woocommerce/product-filter-price -->
+<div class="wp-block-woocommerce-product-filter-price">
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Preço</h3>
+<!-- /wp:heading -->
+<!-- wp:woocommerce/product-filter-price-slider /-->
+</div>
+<!-- /wp:woocommerce/product-filter-price -->
+</div>
+<!-- /wp:woocommerce/product-filters -->
+
+<!-- wp:html -->
+<a class="rv-shop-promo" href="http://localhost:8080/index.php/pedir-peca/"><span class="rv-shop-promo-k">Não encontra a peça?</span><strong>Modelamos e imprimimos à medida.</strong><span class="rv-shop-promo-cta">Pedir uma peça</span></a>
+<!-- /wp:html -->
+</aside>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"rv-shop-main","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-shop-main">
+<!-- wp:woocommerce/store-notices /-->
+<!-- wp:group {"className":"rv-shop-bar","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+<div class="wp-block-group rv-shop-bar">
+<!-- wp:woocommerce/product-results-count /-->
+<!-- wp:woocommerce/catalog-sorting /-->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:woocommerce/product-collection {"queryId":0,"query":{"woocommerceAttributes":[],"woocommerceStockStatus":["instock","outofstock","onbackorder"],"taxQuery":{},"isProductCollectionBlock":true,"perPage":12,"pages":0,"offset":0,"postType":"product","order":"asc","orderBy":"menu_order","author":"","search":"","exclude":[],"sticky":"","inherit":true},"tagName":"div","dimensions":{"widthType":"fill","fixedWidth":""},"displayLayout":{"type":"flex","columns":3,"shrinkColumns":true},"convertedFromProducts":false,"queryContextIncludes":["collection"],"className":"rv-products"} -->
+<div class="wp-block-woocommerce-product-collection rv-products">
+<!-- wp:woocommerce/product-template -->
+<!-- wp:group {"className":"rv-pcard","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-pcard">
+<!-- wp:woocommerce/product-image {"showSaleBadge":false,"imageSizing":"thumbnail","className":"rv-pcard-img"} -->
+<!-- wp:woocommerce/product-sale-badge {"align":"left"} /-->
+<!-- /wp:woocommerce/product-image -->
+<!-- wp:group {"className":"rv-pcard-body","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-pcard-body">
+<!-- wp:post-terms {"term":"product_cat","className":"rv-pcard-cat"} /-->
+<!-- wp:post-title {"level":3,"isLink":true,"className":"rv-pcard-title","__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
+<!-- wp:post-terms {"term":"pa_material","separator":"","className":"rv-pcard-mats"} /-->
+<!-- wp:group {"className":"rv-pcard-foot","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+<div class="wp-block-group rv-pcard-foot">
+<!-- wp:woocommerce/product-price {"className":"rv-pcard-price"} /-->
+<!-- wp:woocommerce/product-button {"className":"rv-pcard-btn"} /-->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+<!-- /wp:woocommerce/product-template -->
+
+<!-- wp:query-pagination {"className":"rv-pagination","layout":{"type":"flex","justifyContent":"center"}} -->
+<!-- wp:query-pagination-previous {"label":"Anterior"} /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next {"label":"Seguinte"} /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:woocommerce/product-collection-no-results -->
+<!-- wp:group {"className":"rv-noresults","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-noresults">
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Nenhum produto encontrado</h3>
+<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p>Experimente outras palavras ou remova filtros — ou peça-nos a peça que procura e nós modelamo-la.</p>
+<!-- /wp:paragraph -->
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="http://localhost:8080/index.php/pedir-peca/">Pedir uma peça</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+</div>
+<!-- /wp:group -->
+<!-- /wp:woocommerce/product-collection-no-results -->
+</div>
+<!-- /wp:woocommerce/product-collection -->
+</div>
+<!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","theme":"twentytwentyfive","tagName":"footer"} /-->

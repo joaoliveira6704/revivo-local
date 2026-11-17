@@ -1,0 +1,8 @@
+# WordPress completo (gerado pelo Docker / importação)
+/wordpress/
+# exports do site real
+/import/*
+!/import/.gitkeep
+# segredos
+.env
+backups/

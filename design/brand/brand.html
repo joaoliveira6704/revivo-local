@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revivo — Identidade visual</title>
+<style>
+:root{--o:#F2611D;--o2:#FF8A4C;--o3:#FFB547;--ink:#0D0F12;--ink2:#15181C;--mut:#5C636D;--bg:#FAF8F5;--line:rgba(15,17,20,.09);--grad:linear-gradient(120deg,#F2611D,#FF7A35 45%,#FFB547)}
+*{box-sizing:border-box}body{margin:0;font-family:Manrope,Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink2);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:auto;padding:56px 28px 80px}
+.k{font-family:"Fira Code",ui-monospace,monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--o)}
+h1{font-size:64px;letter-spacing:-.055em;line-height:.95;margin:.3em 0 .2em}h2{font-size:28px;letter-spacing:-.04em;margin:56px 0 16px}
+p{color:var(--mut);line-height:1.65;max-width:62ch}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 16px 40px -18px rgba(15,17,20,.18)}
+.stage{display:grid;place-items:center;min-height:200px;border-radius:22px;border:1px solid var(--line)}
+.stage img{max-width:80%;height:auto}.dark{background:var(--ink)}.orange{background:var(--o)}.light{background:#fff}
+.cap{font-size:13px;color:var(--mut);margin-top:10px}
+.sw{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff}.sw div{height:96px}.sw p{margin:0;padding:12px 14px;font-size:13px;color:var(--ink2)}.sw b{display:block}
+.type{font-size:56px;font-weight:800;letter-spacing:-.05em;line-height:1}.mono{font-family:"Fira Code",ui-monospace,monospace}
+.do,.dont{padding:20px;border-radius:18px;font-size:14px;line-height:1.6}.do{background:#E8F5EE;color:#185C40}.dont{background:#FDECE6;color:#8A2E0E}
+.icons{display:flex;gap:18px;align-items:flex-end}.icons img{border-radius:22%}
+@media(max-width:800px){.g2,.g3,.g5{grid-template-columns:1fr 1fr}h1{font-size:44px}}
+</style>
+</head>
+<body><div class="wrap">
+<p class="k">Identidade visual · v2.0</p>
+<h1>revivo<span style="color:var(--o)">.</span></h1>
+<p>Impressão 3D para reparar em vez de substituir. O símbolo junta um <b>ciclo de renovação</b> (a segunda vida dos objetos) a um <b>disco feito por camadas</b> (a impressão 3D). O nome escreve-se em minúsculas, com o ponto laranja como assinatura.</p>
+
+<h2>Logótipo</h2>
+<div class="grid g3">
+<div><div class="stage light"><img src="logo-horizontal.svg" alt="Logótipo horizontal"></div><p class="cap">Principal — fundos claros</p></div>
+<div><div class="stage dark"><img src="logo-horizontal-negativo.svg" alt="Logótipo em negativo"></div><p class="cap">Negativo — fundos escuros</p></div>
+<div><div class="stage orange"><img src="logo-mono-branco.svg" alt="Logótipo monocromático"></div><p class="cap">Monocromático — sobre laranja ou fotografia</p></div>
+</div>
+
+<h2>Símbolo e ícones</h2>
+<div class="card"><div class="icons"><img src="mark.svg" width="128" alt=""><img src="mark.svg" width="64" alt=""><img src="mark.svg" width="40" alt=""><img src="mark.svg" width="24" alt=""><img src="mark.svg" width="16" alt=""></div>
+<p class="cap">Usado como favicon, ícone da app e avatar. Área de proteção: ¼ da largura do símbolo à volta. Tamanho mínimo: 16 px.</p></div>
+
+<h2>Cor</h2>
+<div class="grid g5">
+<div class="sw"><div style="background:var(--o)"></div><p><b>Laranja filamento</b>#F2611D</p></div>
+<div class="sw"><div style="background:var(--grad)"></div><p><b>Gradiente Revivo</b>#F2611D → #FFB547</p></div>
+<div class="sw"><div style="background:#1F9D6B"></div><p><b>Verde reparação</b>#1F9D6B</p></div>
+<div class="sw"><div style="background:var(--ink)"></div><p><b>Grafite</b>#0D0F12</p></div>
+<div class="sw"><div style="background:var(--bg)"></div><p><b>Papel</b>#FAF8F5</p></div>
+</div>
+
+<h2>Tipografia</h2>
+<div class="grid g2">
+<div class="card"><p class="k">Títulos e texto</p><div class="type">Manrope</div><p>Pesos 400–800. Títulos a 800 com espaçamento apertado (−0,05 em).</p></div>
+<div class="card"><p class="k">Rótulos e números</p><div class="type mono" style="font-weight:500;letter-spacing:-.02em">Fira Code</div><p>Em maiúsculas espaçadas para etiquetas (EYEBROW), preços técnicos e passos.</p></div>
+</div>
+
+<h2>Utilização</h2>
+<div class="grid g2">
+<div class="do"><b>Sim</b><br>Usar o símbolo com cantos arredondados e o gradiente original · escrever “revivo” em minúsculas · manter contraste suficiente · usar o laranja como cor de ação.</div>
+<div class="dont"><b>Não</b><br>Rodar ou deformar o símbolo · mudar as cores do gradiente · escrever “REVIVO” em maiúsculas · colocar o logótipo laranja sobre fundos laranja.</div>
+</div>
+</div></body></html>

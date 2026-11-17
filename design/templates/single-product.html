@@ -1,0 +1,116 @@
+<!-- wp:template-part {"slug":"header","theme":"twentytwentyfive","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"rv-main rv-product-page","layout":{"type":"default"}} -->
+<main class="wp-block-group rv-main rv-product-page">
+
+<!-- wp:group {"align":"full","className":"rv-section rv-product","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull rv-section rv-product">
+<!-- wp:group {"align":"wide","className":"rv-wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide rv-wrap">
+<!-- wp:woocommerce/breadcrumbs {"className":"rv-crumbs"} /-->
+<!-- wp:woocommerce/store-notices /-->
+
+<!-- wp:group {"className":"rv-product-grid","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-product-grid">
+<!-- wp:group {"className":"rv-product-media","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-product-media">
+<!-- wp:woocommerce/product-image-gallery /-->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"rv-product-info","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-product-info">
+<!-- wp:post-terms {"term":"product_cat","className":"rv-pcard-cat rv-product-cat"} /-->
+<!-- wp:post-title {"level":1,"className":"rv-product-title","__woocommerceNamespace":"woocommerce/product-query/product-title"} /-->
+<!-- wp:woocommerce/product-rating {"isDescendentOfSingleProductTemplate":true,"className":"rv-product-rating"} /-->
+<!-- wp:woocommerce/product-price {"className":"rv-product-price"} /-->
+<!-- wp:post-excerpt {"className":"rv-product-excerpt","__woocommerceNamespace":"woocommerce/product-query/product-summary","excerptLength":100} /-->
+
+<!-- wp:group {"className":"rv-product-mats","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-product-mats">
+<!-- wp:paragraph {"className":"rv-product-label"} -->
+<p class="rv-product-label">Materiais disponíveis</p>
+<!-- /wp:paragraph -->
+<!-- wp:post-terms {"term":"pa_material","separator":"","className":"rv-pcard-mats"} /-->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:woocommerce/add-to-cart-form {"className":"rv-atc"} /-->
+
+<!-- wp:html -->
+<ul class="rv-perks-list">
+<li><span class="rv-pk-i">⏱</span><span><b>Produzido a pedido</b>3 a 5 dias úteis até à expedição</span></li>
+<li><span class="rv-pk-i">♻</span><span><b>Reparar em vez de substituir</b>Prolonga a vida útil dos seus aparelhos</span></li>
+<li><span class="rv-pk-i">✦</span><span><b>Ajustamos à medida</b>Indique marca e modelo na encomenda</span></li>
+</ul>
+<!-- /wp:html -->
+
+<!-- wp:woocommerce/product-meta {"className":"rv-product-meta"} -->
+<div class="wp-block-woocommerce-product-meta rv-product-meta">
+<!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap"}} -->
+<div class="wp-block-group">
+<!-- wp:woocommerce/product-sku /-->
+<!-- wp:post-terms {"term":"product_tag","prefix":"Etiquetas: "} /-->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:woocommerce/product-meta -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:woocommerce/product-details {"className":"rv-product-tabs"} /-->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","className":"rv-section rv-alt rv-related","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull rv-section rv-alt rv-related">
+<!-- wp:group {"align":"wide","className":"rv-wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide rv-wrap">
+<!-- wp:group {"className":"rv-head","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-head">
+<!-- wp:paragraph {"className":"rv-eyebrow"} -->
+<p class="rv-eyebrow">Também pode gostar</p>
+<!-- /wp:paragraph -->
+<!-- wp:heading {"className":"rv-title"} -->
+<h2 class="wp-block-heading rv-title">Produtos relacionados</h2>
+<!-- /wp:heading -->
+</div>
+<!-- /wp:group -->
+<!-- wp:woocommerce/product-collection {"queryId":1,"query":{"perPage":4,"pages":1,"offset":0,"postType":"product","order":"asc","orderBy":"title","search":"","exclude":[],"inherit":false,"taxQuery":{},"isProductCollectionBlock":true,"featured":false,"woocommerceOnSale":false,"woocommerceStockStatus":["instock","outofstock","onbackorder"],"woocommerceAttributes":[],"woocommerceHandPickedProducts":[],"relatedBy":{"categories":true,"tags":true}},"tagName":"div","displayLayout":{"type":"flex","columns":4,"shrinkColumns":true},"dimensions":{"widthType":"fill"},"collection":"woocommerce/product-collection/related","hideControls":["inherit"],"queryContextIncludes":["collection"],"className":"rv-products rv-products-4"} -->
+<div class="wp-block-woocommerce-product-collection rv-products rv-products-4">
+<!-- wp:woocommerce/product-template -->
+<!-- wp:group {"className":"rv-pcard","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-pcard">
+<!-- wp:woocommerce/product-image {"showSaleBadge":false,"imageSizing":"thumbnail","className":"rv-pcard-img"} -->
+<!-- wp:woocommerce/product-sale-badge {"align":"left"} /-->
+<!-- /wp:woocommerce/product-image -->
+<!-- wp:group {"className":"rv-pcard-body","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-pcard-body">
+<!-- wp:post-terms {"term":"product_cat","className":"rv-pcard-cat"} /-->
+<!-- wp:post-title {"level":3,"isLink":true,"className":"rv-pcard-title","__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
+<!-- wp:group {"className":"rv-pcard-foot","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+<div class="wp-block-group rv-pcard-foot">
+<!-- wp:woocommerce/product-price {"className":"rv-pcard-price"} /-->
+<!-- wp:woocommerce/product-button {"className":"rv-pcard-btn"} /-->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+<!-- /wp:woocommerce/product-template -->
+</div>
+<!-- /wp:woocommerce/product-collection -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","theme":"twentytwentyfive","tagName":"footer"} /-->

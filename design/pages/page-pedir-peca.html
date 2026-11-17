@@ -1,0 +1,146 @@
+<!-- wp:group {"align":"full","className":"rv-section","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull rv-section">
+<!-- wp:group {"align":"wide","className":"rv-wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide rv-wrap">
+<!-- wp:group {"className":"rv-head","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-head">
+<!-- wp:paragraph {"className":"rv-eyebrow"} -->
+<p class="rv-eyebrow">Peças à medida</p>
+<!-- /wp:paragraph -->
+<!-- wp:heading {"className":"rv-title"} -->
+<h2 class="wp-block-heading rv-title">Diga-nos o que partiu. Nós tratamos do resto.</h2>
+<!-- /wp:heading -->
+<!-- wp:paragraph {"className":"rv-lead"} -->
+<p class="rv-lead">Envie um pedido de peça de substituição ou de impressão à medida. Cada peça modelada fica guardada na nossa biblioteca digital e passa a estar disponível no catálogo.</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+<!-- wp:group {"className":"rv-formwrap","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-formwrap">
+<!-- wp:group {"className":"rv-formcard","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-formcard">
+<!-- wp:shortcode -->
+[contact-form-7 id="51" title="Pedido de peça à medida"]
+<!-- /wp:shortcode -->
+</div>
+<!-- /wp:group -->
+<!-- wp:group {"className":"rv-panel rv-aside","layout":{"type":"default"}} -->
+<div class="wp-block-group rv-panel rv-aside">
+<!-- wp:paragraph {"className":"rv-num"} -->
+<p class="rv-num">Como funciona</p>
+<!-- /wp:paragraph -->
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Do pedido ao orçamento</h3>
+<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p>Não precisa de equipamento próprio nem de conhecimentos de modelação.</p>
+<!-- /wp:paragraph -->
+<!-- wp:list {"className":"rv-ticks"} -->
+<ul class="wp-block-list rv-ticks"><!-- wp:list-item -->
+<li><span><strong>1. Envie o pedido</strong> — fotografia, medidas ou a peça partida, com a marca e o modelo do aparelho.</span></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><span><strong>2. Análise técnica</strong> — a equipa estuda a peça e escolhe o material mais adequado à sua função.</span></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><span><strong>3. Orçamento e pagamento</strong> — recebe o orçamento e paga diretamente na plataforma.</span></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><span><strong>4. Produção e entrega</strong> — acompanha a produção e a expedição até à entrega.</span></li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:html -->
+<script>
+/* Revivo — medidas em 3 campos + estimativa de preço no formulário "Pedido de peça à medida" (valores indicativos) */
+(function () {
+  var PRECO_CM3 = { 'PLA': 0.25, 'PETG': 0.30, 'Resina': 0.45, 'Recomendado': 0.30 }; // € por cm³ impresso
+  var ACABAMENTO = { 'Standard': 1, 'Com pós-processamento': 1.3, 'Personalizado': 1.5 };
+  var PREENCHIMENTO = 0.3;   // fração do volume da caixa que é material (paredes + enchimento)
+  var MIN_UNIDADE = 2;       // € mínimo por peça
+  var PREPARACAO = 3;        // € por pedido
+  var MODELACAO = { 'Peça de substituição': 10, 'Impressão à medida': 5 };
+  var MAX_MM = 250;          // área de impressão
+  var DIMS = [['comprimento', 'Comprimento', '45'], ['largura', 'Largura', '20'], ['altura', 'Altura', '8']];
+
+  function eur(v) { return v.toLocaleString('pt-PT', { style: 'currency', currency: 'EUR' }); }
+  function num(v) { var n = parseFloat(String(v).replace(',', '.')); return n > 0 ? n : 0; }
+  function fmt(n) { return String(+n.toFixed(1)).replace('.', ','); }
+
+  function init(form) {
+    var q = function (n) { return form.querySelector('[name="' + n + '"]'); };
+    var med = q('medidas'), mat = q('material'), acab = q('acabamento'), qtd = q('quantidade'), out = q('estimativa');
+    if (!med || !mat || form.querySelector('.rv-dims')) return;
+
+    // 3 campos (C × L × A) no lugar do campo de texto "Medidas"; o original fica escondido e é preenchido para seguir no email
+    var medLabel = med.closest('label');
+    var fs = document.createElement('fieldset');
+    fs.className = 'rv-dims';
+    fs.innerHTML = '<legend>Medidas aproximadas <span class="rv-dims-unit">(mm)</span></legend><div class="rv-dims-grid">' +
+      DIMS.map(function (d) {
+        return '<label class="rv-dim"><span>' + d[1] + '</span><span class="rv-dim-field">' +
+          '<input type="text" inputmode="decimal" autocomplete="off" data-dim="' + d[0] + '" placeholder="' + d[2] + '" aria-label="' + d[1] + ' em milímetros">' +
+          '<span class="rv-dim-mm" aria-hidden="true">mm</span></span></label>';
+      }).join('') + '</div>';
+    medLabel.insertAdjacentElement('beforebegin', fs);
+    medLabel.hidden = true;
+    medLabel.style.display = 'none';
+    var row = fs.closest('.rv-f2'); if (row) row.classList.add('rv-dimsrow');
+    var dimInputs = fs.querySelectorAll('[data-dim]');
+
+    var box = document.createElement('div');
+    box.className = 'rv-estimate';
+    box.setAttribute('aria-live', 'polite');
+    (mat.closest('.rv-f3') || fs).insertAdjacentElement('afterend', box);
+
+    function update() {
+      var d = Array.prototype.map.call(dimInputs, function (i) { return num(i.value); });
+      var filled = d.filter(Boolean);
+      med.value = filled.length ? d.map(function (x) { return x ? fmt(x) : '?'; }).join(' × ') + ' mm' : '';
+
+      if (filled.length < 3) {
+        box.classList.add('is-empty');
+        box.innerHTML = '<p class="rv-est-label">Estimativa de preço</p>' +
+          '<p class="rv-est-note">Preencha o comprimento, a largura e a altura para ver uma estimativa.</p>';
+        if (out) out.value = '';
+        return;
+      }
+      box.classList.remove('is-empty');
+      var n = Math.min(500, Math.max(1, parseInt(qtd && qtd.value, 10) || 1));
+      var tipo = (form.querySelector('[name="tipo"]:checked') || {}).value || 'Peça de substituição';
+      var cm3 = d[0] * d[1] * d[2] / 1000 * PREENCHIMENTO;
+      var unid = Math.max(MIN_UNIDADE, cm3 * (PRECO_CM3[mat.value] || 0.30) * (ACABAMENTO[acab && acab.value] || 1));
+      var desc = n >= 50 ? 0.2 : n >= 10 ? 0.1 : 0;
+      var total = PREPARACAO + (MODELACAO[tipo] || 0) + unid * (1 - desc) * n;
+      var min = Math.floor(total * 0.85), max = Math.ceil(total * 1.2);
+      var matTxt = mat.value === 'Recomendado' ? 'material recomendado' : mat.value;
+
+      box.innerHTML = '<p class="rv-est-label">Estimativa de preço</p>' +
+        '<p class="rv-est-value">' + eur(min) + ' – ' + eur(max) + '</p>' +
+        '<p class="rv-est-detail">' + n + (n > 1 ? ' peças' : ' peça') + ' · ' + med.value + ' · ' + matTxt + ' · ' + (acab ? acab.value.toLowerCase() : '') +
+        (desc ? ' · desconto de quantidade ' + desc * 100 + '%' : '') + '</p>' +
+        (Math.max.apply(null, d) > MAX_MM ? '<p class="rv-est-warn">Acima de ' + MAX_MM + ' mm a peça pode ter de ser impressa em várias partes.</p>' : '') +
+        '<p class="rv-est-note">Valor indicativo, calculado a partir das medidas. O orçamento final é enviado após a análise técnica.</p>';
+      if (out) out.value = eur(min) + ' – ' + eur(max);
+    }
+
+    form.addEventListener('input', update);
+    form.addEventListener('change', update);
+    form.addEventListener('reset', function () { setTimeout(update, 0); });
+    document.addEventListener('wpcf7reset', function () { setTimeout(update, 0); });
+    update();
+  }
+
+  function run() { document.querySelectorAll('.wpcf7 form').forEach(init); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+})();
+</script>
+<!-- /wp:html -->

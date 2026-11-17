@@ -1,0 +1,26 @@
+/* Revivo Pedidos — administração */
+.rvp-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#f0f0f1;color:#3c434a;white-space:nowrap}
+.rvp-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.rvp-pill--novo{background:#fdeee6;color:#c44a10}
+.rvp-pill--analise{background:#fff4d6;color:#8a6100}
+.rvp-pill--orcamento{background:#e7f0ff;color:#1d4fb8}
+.rvp-pill--aceite,.rvp-pill--producao{background:#efe8ff;color:#5b34c2}
+.rvp-pill--enviado,.rvp-pill--concluido{background:#e3f5ec;color:#16774d}
+.rvp-pill--recusado,.rvp-pill--cancelado{background:#fbe9e7;color:#b3261e}
+.rvp-muted{color:#787c82;font-size:12px}
+.column-rvp_status{width:150px}.column-rvp_quote{width:140px}.column-date{width:130px}
+.rvp-admin-head{display:flex;align-items:center;gap:12px;margin:4px 0 14px;font-size:14px}
+.rvp-table{width:100%;border-collapse:collapse}
+.rvp-table th{width:170px;text-align:left;vertical-align:top;padding:10px 12px 10px 0;color:#50575e;font-weight:600}
+.rvp-table td{padding:10px 0;border-bottom:1px solid #f0f0f1;font-size:14px;line-height:1.55}
+.rvp-quote-box label{display:block;margin-bottom:4px}
+.rvp-quote-box input[type=number],.rvp-quote-box textarea,.rvp-quote-box select{width:100%}
+.rvp-quote-box #rvp_quote_price{font-size:20px;font-weight:700;padding:6px 10px}
+.rvp-quote-buttons{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 8px}
+.rvp-quote-buttons .button-primary{background:#F2611D;border-color:#d9450c}
+.rvp-quote-buttons .button-primary:hover{background:#d9450c;border-color:#c43d0a}
+.rvp-log{margin:0 0 0 18px}.rvp-log li{margin:0 0 10px}
+.rvp-dash-widget{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.rvp-dash-widget a{display:grid;gap:2px;padding:12px 8px;border-radius:10px;background:#f6f7f7;text-decoration:none;text-align:center;color:#1d2327}
+.rvp-dash-widget a:hover{background:#fdeee6}
+.rvp-dash-widget b{font-size:22px}.rvp-dash-widget span{font-size:11px;color:#50575e}

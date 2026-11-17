@@ -188,6 +188,15 @@ html.rv-darkmode .rv-step .rv-icon{box-shadow:0 0 0 8px var(--rv-ink),var(--rv-g
 .rv-step:hover .rv-icon{transform:translateY(-4px) rotate(-6deg)}
 .rv-step h3{font-size:1.3rem!important;letter-spacing:-.03em}
 .rv-step .rv-num{font-size:.75rem;letter-spacing:.14em}
+/* passos apagados até a linha de progresso lá chegar (o revivo.js põe .is-on); fundo sempre opaco */
+.rv-js .rv-step .rv-icon{background:#1A1E24;color:#7D848E;box-shadow:0 0 0 8px var(--rv-ink),inset 0 0 0 1px rgba(255,255,255,.1);transition:transform .5s var(--rv-ease),color .45s,box-shadow .5s}
+.rv-js .rv-step .rv-icon::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--rv-grad);opacity:0;transform:scale(.6);transition:opacity .45s,transform .55s var(--rv-ease)}
+.rv-js .rv-step.is-on .rv-icon{color:#fff;box-shadow:0 0 0 8px var(--rv-ink),var(--rv-glow)}
+.rv-js .rv-step.is-on .rv-icon::before{opacity:1;transform:none}
+.rv-js .rv-light .rv-step .rv-icon{background:#fff;color:#9AA1AA;box-shadow:0 0 0 8px #F7F6F2,inset 0 0 0 1px var(--rv-line)}
+.rv-js .rv-light .rv-step.is-on .rv-icon{color:#fff;box-shadow:0 0 0 8px #F7F6F2,var(--rv-glow)}
+html.rv-darkmode.rv-js .rv-step .rv-icon{box-shadow:0 0 0 8px #0A0C0F,inset 0 0 0 1px rgba(255,255,255,.1)}
+html.rv-darkmode.rv-js .rv-step.is-on .rv-icon{box-shadow:0 0 0 8px #0A0C0F,var(--rv-glow)}
 
 /* ---------- categorias em grelha ---------- */
 .rv-cats{display:grid!important;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:left}

@@ -31,8 +31,16 @@
     if (hdr) hdr.classList.toggle('rv-scrolled', y > (tb ? tb.offsetHeight : 0) + 10);
     steps.forEach(function (s) {
       var b = s.getBoundingClientRect();
-      var p = (innerHeight * .85 - b.top) / (b.height + innerHeight * .25);
-      s.style.setProperty('--p', (Math.min(1, Math.max(0, p)) * 100).toFixed(1) + '%');
+      var p = Math.min(1, Math.max(0, (innerHeight * .85 - b.top) / (b.height + innerHeight * .25)));
+      s.style.setProperty('--p', (p * 100).toFixed(1) + '%');
+      /* cada passo acende quando a linha chega ao centro do quadrado
+         (sem linha, em ecrãs pequenos: quando o quadrado entra no ecrã) */
+      var line = getComputedStyle(s, '::before').display !== 'none';
+      s.querySelectorAll('.rv-step').forEach(function (st) {
+        var ic = (st.querySelector('.rv-icon') || st).getBoundingClientRect();
+        var on = reduce || (line ? p * b.width >= ic.left + ic.width / 2 - b.left : innerHeight * .8 > ic.top);
+        st.classList.toggle('is-on', on);
+      });
     });
   }
   addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
@@ -557,7 +565,8 @@
   nums.forEach(function (n) { n.el.textContent = '0' + (n.dec ? n.sep + '0'.repeat(n.dec) : '') + n.suf; ioN.observe(n.el); });
 
   /* entrada suave dos elementos ao fazer scroll */
-  var sel = '.rv-head,.rv-hero-text>*,.rv-art,.rv-split>:not(.rv-stats),.rv-card,.rv-stat,.rv-step,.rv-cats a,.rv-mats,' +
+  /* nos passos só o texto entra a desvanecer: o quadrado fica opaco para a linha de progresso não se ver através dele */
+  var sel = '.rv-head,.rv-hero-text>*,.rv-art,.rv-split>:not(.rv-stats),.rv-card,.rv-stat,.rv-step>:not(.rv-icon),.rv-cats a,.rv-mats,' +
     '.rv-feature>*,.rv-cta,.rv-bmc>*,.rv-quote,.rv-formcard,.rv-aside,.rv-facts,.rv-warn,.rv-fgrid>*,.rv-pagehero .rv-wrap>*,' +
     '.wp-block-buttons.rv-center';
   var els = [];

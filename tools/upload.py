@@ -202,10 +202,9 @@ def main():
     # só o relatório da instalação: o topo do wp-admin pode ter avisos que não têm a ver (ex.: atualização do WordPress)
     start = max(msg.find('A instalar'), msg.find('Installing'))
     msg = msg[start:] if start >= 0 else msg
-    for err in ('falhou', 'failed', 'Erro', 'Error'):
-        if err in msg:
-            print('aviso do WordPress:', msg[msg.find(err) - 120:msg.find(err) + 200])
-            break
+    # a página traz traduções de JS com "falhou"/"failed": em vez de procurar erros, confirma a mensagem de sucesso
+    if not re.search(r'com sucesso|successfully', msg):
+        print('aviso: o WordPress não confirmou a instalação —', msg[:300])
 
     if kind == 'plugin' and '--no-activate' not in sys.argv:
         s, p = rest.call('/wp/v2/plugins/' + K['slug'], {'status': 'active'})

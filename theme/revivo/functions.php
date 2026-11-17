@@ -78,6 +78,40 @@ function revivo_assets() {
 add_action( 'wp_enqueue_scripts', 'revivo_assets', 5 );
 
 /**
+ * Cartões de produto (loja, pesquisa, relacionados): estrelas, média e número de avaliações
+ * logo a seguir ao título (.rv-pcard-title).
+ */
+function revivo_card_rating( $content, $block, $instance ) {
+	$class = $block['attrs']['className'] ?? '';
+	if ( false === strpos( $class, 'rv-pcard-title' ) || ! function_exists( 'wc_get_product' ) ) {
+		return $content;
+	}
+	$product = wc_get_product( $instance->context['postId'] ?? 0 );
+	if ( ! $product || ! wc_review_ratings_enabled() ) {
+		return $content;
+	}
+	$count = (int) $product->get_rating_count();
+	$avg   = (float) $product->get_average_rating();
+	if ( ! $count ) {
+		return $content . '<div class="rv-pcard-rating is-empty"><span class="rv-stars" style="--r:0%" aria-hidden="true"></span><span class="rv-pcard-rcount">Sem avaliações</span></div>';
+	}
+	$label = sprintf(
+		/* translators: 1: média, 2: número de avaliações */
+		_n( 'Avaliação média de %1$s em 5 (%2$d avaliação)', 'Avaliação média de %1$s em 5 (%2$d avaliações)', $count, 'revivo' ),
+		number_format_i18n( $avg, 1 ),
+		$count
+	);
+	return $content . sprintf(
+		'<div class="rv-pcard-rating" role="img" aria-label="%1$s"><span class="rv-stars" style="--r:%2$s%%" aria-hidden="true"></span><b aria-hidden="true">%3$s</b><span class="rv-pcard-rcount" aria-hidden="true">(%4$d)</span></div>',
+		esc_attr( $label ),
+		esc_attr( round( $avg / 5 * 100, 1 ) ),
+		esc_html( number_format_i18n( $avg, 1 ) ),
+		$count
+	);
+}
+add_filter( 'render_block_core/post-title', 'revivo_card_rating', 10, 3 );
+
+/**
  * A minha conta: "Morada" → "Moradas" (a página tem faturação e envio).
  */
 function revivo_account_menu_items( $items ) {
